@@ -3,21 +3,66 @@
   "extends": [
     "config:recommended"
   ],
+
+  "timezone": "Europe/Vienna",
   "dependencyDashboard": true,
   "automerge": false,
+
   "packageRules": [
     {
+      "description": "Automatically update low-risk containers",
+      "matchPackageNames": [
+        "emby/embyserver",
+        "ghcr.io/justiniven/smtp-oauth-relay"
+      ],
+      "matchUpdateTypes": [
+        "patch",
+        "minor"
+      ],
+      "minimumReleaseAge": "3 days",
+      "automerge": true,
+      "automergeType": "pr"
+    },
+
+    {
+      "description": "Never automatically merge major updates",
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "automerge": false
+    },
+
+    {
+      "description": "Authentik must always be reviewed manually",
       "matchPackageNames": [
         "ghcr.io/goauthentik/server"
       ],
       "groupName": "Authentik",
       "automerge": false
     },
+
     {
+      "description": "PostgreSQL must always be reviewed manually",
       "matchPackageNames": [
         "postgres"
       ],
       "groupName": "PostgreSQL",
+      "automerge": false
+    },
+
+    {
+      "description": "Vaultwarden must always be reviewed manually",
+      "matchPackageNames": [
+        "vaultwarden/server"
+      ],
+      "automerge": false
+    },
+
+    {
+      "description": "Nginx Proxy Manager must always be reviewed manually",
+      "matchPackageNames": [
+        "jc21/nginx-proxy-manager"
+      ],
       "automerge": false
     }
   ]
