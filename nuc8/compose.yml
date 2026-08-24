@@ -76,7 +76,7 @@ services:
 
   # Authentik PostgreSQL database
   authentik-postgres:
-    image: postgres:18.6-alpine
+    image: postgres:16.15-alpine
     container_name: authentik-postgres
     restart: unless-stopped
     environment:
