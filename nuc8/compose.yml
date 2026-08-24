@@ -53,7 +53,7 @@ services:
 
   # SMTP relay for Microsoft 365 via Graph OAuth2
   smtp-oauth-relay:
-    image: ghcr.io/justiniven/smtp-oauth-relay:1.6.0
+    image: ghcr.io/justiniven/smtp-oauth-relay:1.6.1
     container_name: smtp-oauth-relay
     restart: unless-stopped
     user: "0:0"
